@@ -39,13 +39,14 @@ public:
 				if (clock - plane->ready_takeoff_time > departure_time) {
 					// plane has waited long enough
 					// FIXME: remove plane from departure queue
-					
+					the_queue.pop();
 
 					// FIXME: calculate the wait time
 					
 
 					// FIXME: update total_wait and num_served
-					
+					total_wait = clock - the_queue.front()->ready_takeoff_time;
+					num_served++;
 
 
 					// take off!   goodbye plane
