@@ -20,15 +20,18 @@ private:
 public:
 	LandingQueue() : total_wait(0), num_served(0) {}
 
-	void set_arrival_rate(double arrival_rate) {
+	void set_arrival_rate(double arrival_rate) 
+	{
 		this->arrival_rate = arrival_rate;
 	}
 
-	int get_total_wait() {
+	int get_total_wait() 
+	{
 		return total_wait;
 	}
 
-	int get_num_served() {
+	int get_num_served() 
+	{
 		return num_served;
 	}
 
@@ -36,16 +39,9 @@ public:
 	{
 		if (my_random.next_double() < arrival_rate)
 		{
-			the_queue.push(new Plane(clock));
+			Plane *p = new Plane(clock);
+			the_queue.push(p);
 		}
-		
-		/* FIXME:  add a new plane into the landing queue based on the arrival_rate
-		   HINT: my_random.next_double() returns a random value between 0 and 1.
-		         Read how the the simulation described in the book does this 
-		         (section 6.5 pages. 392-393).
-		         Look at the Passenger_Queue::check_new_arrival() method 
-		*/
-		total_wait += clock - the_queue.front()->arrival_time;
 
 	}
 

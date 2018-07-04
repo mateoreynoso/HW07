@@ -43,10 +43,11 @@ public:
 
 					// FIXME: calculate the wait time
 					
+					int wait = clock - plane->ready_takeoff_time;
 
 					// FIXME: update total_wait and num_served
-					total_wait = clock - the_queue.front()->ready_takeoff_time;
-					num_served++;
+					total_wait += wait;
+					++num_served;
 
 
 					// take off!   goodbye plane
